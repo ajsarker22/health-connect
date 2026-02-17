@@ -1,5 +1,3 @@
-# Ignore sensitive files
-db_connect.php
 
 # Ignore folders with uploaded files
 /uploads/
