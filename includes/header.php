@@ -4,10 +4,16 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if BASE_URL is defined, if not, define it (as a fallback)
-if (!defined('BASE_URL')) {
-    // IMPORTANT: Change 'health_connect' if your project folder has a different name!
-    define('BASE_URL', '/health_connect/');
+// --- Smart BASE_URL Definition ---
+// Check if we are on the Render environment
+if (getenv('RENDER') !== false) {
+    // On Render, the app is at the root of the domain
+    define('BASE_URL', '/');
+} else {
+    // On local XAMPP, the app is in a subfolder
+    if (!defined('BASE_URL')) {
+        define('BASE_URL', '/health_connect/');
+    }
 }
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -49,7 +55,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <nav>
                 <span>Welcome, ' . htmlspecialchars($name) . ' (' . ucfirst($role) . ')</span>';
                 
-    // --- Dynamic Dashboard Link (This was already correct) ---
     if ($role == 'patient') {
         echo '<a href="' . BASE_URL . 'patient/dashboard.php">Dashboard</a>';
     } elseif ($role == 'doctor') {
@@ -58,14 +63,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         echo '<a href="' . BASE_URL . 'admin/dashboard.php">Dashboard</a>';
     }
 
-    // --- Dynamic Profile Link (This is the fix) ---
+    // --- Dynamic Profile Link ---
     if ($role == 'patient') {
         echo '<a href="' . BASE_URL . 'patient/my_profile.php">My Profile</a>';
     } elseif ($role == 'doctor') {
-        // Assuming you might create a doctor profile page later
         echo '<a href="' . BASE_URL . 'doctor/my_profile.php">My Profile</a>';
     } elseif ($role == 'admin') {
-        // Assuming you might create an admin profile page later
         echo '<a href="' . BASE_URL . 'admin/my_profile.php">My Profile</a>';
     }
 
