@@ -1,7 +1,7 @@
 <?php
 // --- 1. SECURITY & DATABASE SETUP ---
 require_once '../includes/auth_check.php'; // Ensures user is logged in
-require_once '../db_connect.php';         // Connects to the database and sets up BASE_URL
+require_once '../includes/db_connect.php';         // Connects to the database and sets up BASE_URL
 
 // Double-check that the user is a patient, not a doctor or admin.
 if ($_SESSION['user_role'] !== 'patient') {

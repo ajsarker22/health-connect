@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/auth_check.php';
-require_once '../db_connect.php';
+require_once '../includes/db_connect.php';
 // Add this at the top of admin/dashboard.php
  $status_message = '';
 if (isset($_GET['status'])) {

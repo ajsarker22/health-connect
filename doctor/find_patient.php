@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/auth_check.php';
-require_once '../db_connect.php';
+require_once '../includes/db_connect.php';
 if ($_SESSION['user_role'] !== 'doctor') { header("location: ../login.php"); exit; }
 
  $patient = null;
