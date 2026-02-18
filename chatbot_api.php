@@ -41,7 +41,7 @@ Keep your answers concise and easy to understand. Do not mention you are an AI m
 // --- Use cURL to send the request to the Google Gemini API ---
  $ch = curl_init();
 // *** USING THE CORRECT MODEL NAME FROM YOUR LIST ***
- $url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=' . GOOGLE_AI_API_KEY;
+ $url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' . GOOGLE_AI_API_KEY;
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
