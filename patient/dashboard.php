@@ -30,7 +30,7 @@ if (isset($_GET['dismiss_notice_id']) && is_numeric($_GET['dismiss_notice_id']))
 // --- 3. FETCH DATA FROM DATABASE ---
 
 // Fetch all active notices from all hospitals
- $notices_stmt = $pdo->query("SELECT n.notice_id, n.title, n.content, h.name AS hospital_name, n.posted_date FROM notices n JOIN hospitals h ON n.hospital_id = h.hospital_id WHERE n.is_active = 1 ORDER BY n.posted_date DESC LIMIT 5");
+ $notices_stmt = $pdo->query("SELECT n.notice_id, n.title, n.content, h.name AS hospital_name, n.posted_date FROM notices n JOIN hospitals h ON n.hospital_id = h.hospital_id WHERE n.is_active = TRUE ORDER BY n.posted_date DESC LIMIT 5");
  $all_notices = $notices_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Filter out any notices the user has already dismissed in this session

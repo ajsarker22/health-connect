@@ -15,7 +15,7 @@ if ($_SESSION['user_role'] !== 'admin') {
 if (isset($_GET['approve_id']) && is_numeric($_GET['approve_id'])) {
     $doctor_id = $_GET['approve_id'];
     // First, ensure the doctor belongs to this admin's hospital before approving
-    $stmt = $pdo->prepare("UPDATE doctors SET is_approved = 1 WHERE doctor_id = ? AND hospital_id = ?");
+    $stmt = $pdo->prepare("UPDATE doctors SET is_approved = TRUE WHERE doctor_id = ? AND hospital_id = ?");
     if ($stmt->execute([$doctor_id, $hospital_id])) {
         $status_message = "Doctor approved successfully.";
     } else {
