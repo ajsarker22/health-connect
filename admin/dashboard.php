@@ -24,7 +24,7 @@ if ($_SESSION['user_role'] !== 'admin') {
  $total_patients_stmt = $pdo->query("SELECT COUNT(*) FROM patients");
  $total_patients = $total_patients_stmt->fetchColumn();
 
- $total_doctors_stmt = $pdo->query("SELECT COUNT(*) FROM doctors WHERE is_approved = 1");
+ $total_doctors_stmt = $pdo->query("SELECT COUNT(*) FROM doctors WHERE is_approved = TRUE");
  $total_doctors = $total_doctors_stmt->fetchColumn();
 
 include '../includes/header.php';
