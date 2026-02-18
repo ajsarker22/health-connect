@@ -1,5 +1,5 @@
 <?php
-// This script uses the Groq API for fast and reliable responses.
+// This script uses the Groq API and reads the model from an environment variable.
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -10,6 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // --- IMPORTANT: PASTE YOUR GROQ API KEY HERE ---
 define('GROQ_API_KEY', getenv('GROQ_API_KEY'));
+
+// --- Get the model from the environment variable, with a fallback ---
+ $model = getenv('GROQ_MODEL');
+if ($model === false) {
+    // Fallback to a default model if the environment variable is not set
+    $model = 'llama-3.1-8b-instant'; 
+}
 
  $userMessage = trim($_POST['message']);
 if (empty($userMessage)) {
@@ -22,7 +29,7 @@ if (empty($userMessage)) {
 
 // --- Prepare the data payload for the Groq API ---
  $data = [
-    'model' => 'llama3-8b-8192', // A fast and reliable model from Groq
+    'model' => $model, // Use the model from the environment variable
     'messages' => [
         ['role' => 'system', 'content' => $system_prompt],
         ['role' => 'user', 'content' => $userMessage]
