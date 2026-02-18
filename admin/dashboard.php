@@ -16,7 +16,7 @@ if ($_SESSION['user_role'] !== 'admin') {
  $hospital_id = $_SESSION['user_id'];
 
 // Get pending doctors for this hospital
- $pending_doctors_stmt = $pdo->prepare("SELECT doctor_id, name, email, phone, specialization FROM doctors WHERE hospital_id = ? AND is_approved = 0");
+ $pending_doctors_stmt = $pdo->prepare("SELECT doctor_id, name, email, phone, specialization FROM doctors WHERE hospital_id = ? AND is_approved = FALSE");
  $pending_doctors_stmt->execute([$hospital_id]);
  $pending_doctors = $pending_doctors_stmt->fetchAll(PDO::FETCH_ASSOC);
 
