@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // --- IMPORTANT: PASTE YOUR GROQ API KEY HERE ---
-define('GROQ_API_KEY', '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');
+define('GROQ_API_KEY', getenv('GROQ_API_KEY'));
 
  $userMessage = trim($_POST['message']);
 if (empty($userMessage)) {
