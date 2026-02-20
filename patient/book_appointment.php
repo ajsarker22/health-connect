@@ -91,7 +91,6 @@ include '../includes/header.php';
                                 echo '<option value="' . $hospital['hospital_id'] . '">' . htmlspecialchars($hospital['name']) . '</option>';
                             }
                         }
-                        }
                         ?>
                     </select>
                     </select>
