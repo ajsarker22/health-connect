@@ -66,7 +66,7 @@ include '../includes/header.php';
                      <option value="">--Select Doctor--</option>
                      <?php 
                         // For simplicity, show all approved doctors. In a real app, filter by hospital/department.
-                        $all_docs = $pdo->query("SELECT doctor_id, name, specialization FROM doctors WHERE is_approved = 1")->fetchAll(PDO::FETCH_ASSOC);
+                        $all_docs = $pdo->query("SELECT doctor_id, name, specialization FROM doctors WHERE is_approved = TRUE")->fetchAll(PDO::FETCH_ASSOC);
                         foreach($all_docs as $doc): ?>
                         <option value="<?php echo $doc['doctor_id']; ?>"><?php echo htmlspecialchars($doc['name'] . ' - ' . $doc['specialization']); ?></option>
                     <?php endforeach; ?>
