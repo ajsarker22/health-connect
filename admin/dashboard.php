@@ -78,6 +78,7 @@ include '../includes/header.php';
                 <h3>Management Tools</h3>
                 <a href="add_report.php" class="btn" style="margin-bottom: 10px; display:block;">Add Patient Report</a>
                 <a href="post_notice.php" class="btn" style="display:block;">Post Hospital Notice</a>
+                <a href="manage_departments.php" class="btn" style="margin-bottom: 10px; display:block;">Manage Departments</a>
             </div>
         </div>
     </div>

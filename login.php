@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['user_id'] = $user['hospital_id'];
                     $_SESSION['user_name'] = $user['name'];
                     $_SESSION['user_role'] = 'admin';
+                    // $_SESSION['hospital_id'] = $hospital_id;
                     session_regenerate_id(true);
                     header("location: admin/dashboard.php");
                     exit;
