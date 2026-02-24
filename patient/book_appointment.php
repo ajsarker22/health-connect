@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $check = $pdo->prepare("
         SELECT hospital_id, department_id 
         FROM doctors 
-        WHERE doctor_id = ? AND is_approved = TRUE
+        WHERE doctor_id = ? AND is_approved = 1
     ");
     $check->execute([$doctor_id]);
     $doctor = $check->fetch(PDO::FETCH_ASSOC);
