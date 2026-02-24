@@ -16,7 +16,7 @@ if (
         FROM doctors
         WHERE hospital_id = ?
         AND department_id = ?
-        AND is_approved = 1
+        AND is_approved = TRUE
     ");
 
     $stmt->execute([$hospital_id, $department_id]);
